@@ -3,6 +3,7 @@
 #include <vector>
 #include <limits.h>
 #include <utility>
+#include <cstdlib>
 const int inf = INT_MAX/100;
 using namespace std;
 void bfs(char ** graph, bool ** used,int ** dist,  pair <int, int> firstVertex, int n, int m)
@@ -94,6 +95,9 @@ int main()
         dist3[i] = new int[m];
     }
     pair<int, int> vertex1, vertex2, vertex3;
+    vertex1.first = -1;
+    vertex2.first = -1;
+    vertex3.first = -1;
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < m; j++)
@@ -115,6 +119,11 @@ int main()
                 vertex3.second = j;
             }
         }
+    }
+    if(vertex1.first == -1 || vertex2.first == -1 || vertex3.first == -1)
+    {
+        cout << -1;
+        exit(0);
     }
     bool ** used = new bool *[n];
     for(int i = 0; i < n; i++)
